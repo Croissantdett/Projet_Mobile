@@ -7,7 +7,7 @@ import retrofit2.http.POST;
 
 public interface API_FSI {
 
-    String BASE_URL = "http://localhost/FSI_PHP/API/";
+    String BASE_URL = "https://capyfsi.site/API/";
 
     @FormUrlEncoded
     @POST("Eloi.php")

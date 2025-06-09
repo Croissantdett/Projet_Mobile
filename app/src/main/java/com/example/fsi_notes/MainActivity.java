@@ -10,12 +10,10 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response; // Assurez-vous d'avoir le bon import pour Response
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         mdp = findViewById(R.id.mdp);
         btnConnexion = findViewById(R.id.btnConnexion);
 
-
-
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,45 +44,51 @@ public class MainActivity extends AppCompatActivity {
                 loginjava = login.getText().toString();
                 mdpjava = mdp.getText().toString();
 
-                if (!loginjava.isEmpty() && !mdpjava.isEmpty()) {
-                    RetroFitClientUtilisateur.getInstance()
-                            .getMyApi()
-                            .demon(loginjava, mdpjava)
-                            .enqueue(new Callback<Utilisateur>() {
-                                @Override
-                                public void onResponse(Call<Utilisateur> call, retrofit2.Response<Utilisateur> response) {
-                                    if (response.isSuccessful() && response.body() != null) {
-                                        Utilisateur utilisateur = response.body();
-                                            Log.d("utilisateur", utilisateur.toString());
-                                            DataSource dataSource = new DataSource(MainActivity.this);
-                                            dataSource.open();
-
-                                            dataSource.insertuser(utilisateur);
-
-                                            Intent intent = new Intent(MainActivity.this, Bilan1Activity.class);
-                                            startActivity(intent);
-
-
-
-                                    } else {
-                                        Toast.makeText(MainActivity.this, "Authentification échouée", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Call<Utilisateur> call, Throwable t) {
-                                    Log.e("RetrofitError", "Erreur : " + t.getMessage());
-                                    Toast.makeText(MainActivity.this, "Erreur : " + t.getMessage(), Toast.LENGTH_LONG).show();
-                                }
-                            });
-
-
-
+                if (loginjava.isEmpty() || mdpjava.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
+                RetroFitClientUtilisateur.getInstance()
+                        .getMyApi()
+                        .demon(loginjava, mdpjava)
+                        .enqueue(new Callback<Utilisateur>() {
+                            @Override
+                            public void onResponse(Call<Utilisateur> call, Response<Utilisateur> response) {
+
+                                if (response.isSuccessful() && response.body() != null) {
+                                    Utilisateur utilisateur = response.body();
+                                    Log.d("LOGIN_API", "Utilisateur reçu de l'API : " + utilisateur.getNomUti());
+
+                                    DataSource dataSource = new DataSource(MainActivity.this);
+                                    dataSource.open();
+
+                                    Log.d("LOGIN_DB", "Suppression des anciens utilisateurs de la base de données locale.");
+                                    dataSource.deleteUtilisateur();
+
+                                    Log.d("LOGIN_DB", "Insertion du nouvel utilisateur : " + utilisateur.getNomUti());
+                                    dataSource.insertuser(utilisateur);
+
+                                    dataSource.close();
+
+                                    Intent intent = new Intent(MainActivity.this, Bilan1Activity.class);
+                                    startActivity(intent);
+
+                                    finish();
+
+                                } else {
+
+                                    Toast.makeText(MainActivity.this, "Login ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Utilisateur> call, Throwable t) {
+                                Log.e("LOGIN_API_ERROR", "Erreur réseau : " + t.getMessage());
+                                Toast.makeText(MainActivity.this, "Erreur réseau. Veuillez vérifier votre connexion.", Toast.LENGTH_LONG).show();
+                            }
+                        });
             }
         });
-
-
     }
 }

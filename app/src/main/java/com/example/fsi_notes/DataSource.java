@@ -12,6 +12,7 @@ public class DataSource {
     private MySQLHelper db;
 
     public DataSource(Context context){
+
         db = new MySQLHelper(context);
     }
 
@@ -44,17 +45,17 @@ public class DataSource {
         values.put("telTut", utilisateur.getTelTut());
         values.put("mailTut", utilisateur.getMailTut());
         values.put("datVisBil1", utilisateur.getDatVisBil1());
-        values.put("notEntBil1", utilisateur.getNotEntBil1());
-        values.put("notDossBil1", utilisateur.getNotDosBil1());
+        values.put("notEnt", utilisateur.getNotEntBil1());
+        values.put("notDosBil1", utilisateur.getNotDosBil1());
         values.put("notOraBil1", utilisateur.getNotOrBil1());
         values.put("moyBil1", utilisateur.getMoyBil1());
         values.put("remBil1", utilisateur.getRemBil1());
         values.put("datVisBil2", utilisateur.getDatVisBil2());
-        values.put("notDossBil2", utilisateur.getNotDossBil2());
+        values.put("notDosBil2", utilisateur.getNotDossBil2());
         values.put("notOraBil2", utilisateur.getNotOrBil2());
         values.put("moyBil2", utilisateur.getMoyBil2());
         values.put("remBil2", utilisateur.getRemBil2());
-        Log.d("qzdfqdsf", values.toString());
+
         int id  = (int) sqLiteDatabase.insert("Utilisateur", null, values);
         utilisateur.setId(id);
 

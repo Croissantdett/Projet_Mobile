@@ -30,6 +30,7 @@
 
         <activity android:name=".Bilan1Activity" android:exported="false"/>
         <activity android:name=".Bilan2Activity" android:exported="false"/>
+        <activity android:name=".InformationActivity" android:exported="false"/>
 
     </application>
 

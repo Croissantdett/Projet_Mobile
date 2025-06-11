@@ -73,15 +73,14 @@ public class Bilan1Activity extends AppCompatActivity {
             }
         });
 
-        // Gérer les clics sur les items DANS le tiroir
         navigationView.setNavigationItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
             if (itemId == R.id.nav_bilans) {
                 Toast.makeText(Bilan1Activity.this, "Vous êtes déjà sur la page des bilans", Toast.LENGTH_SHORT).show();
             } else if (itemId == R.id.nav_info) {
-
-                Toast.makeText(Bilan1Activity.this, "Clic sur Informations", Toast.LENGTH_SHORT).show();
+                Intent infoIntent = new Intent(Bilan1Activity.this, InformationActivity.class);
+                startActivity(infoIntent);
             } else if (itemId == R.id.nav_logout) {
 
                 Toast.makeText(Bilan1Activity.this, "Déconnexion...", Toast.LENGTH_SHORT).show();

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnConnexion;
     private String loginjava;
     private String mdpjava;
+    private TextView textViewMoyenne;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
                                     Intent intent = new Intent(MainActivity.this, Bilan1Activity.class);
                                     startActivity(intent);
 
+                                    float noteBilan1 = utilisateur.getMoyBil1();
+                                    float noteBilan2 = utilisateur.getMoyBil2();
+                                    float moyenne = (noteBilan1 + noteBilan2) / 2;
+                                    textViewMoyenne.setText("Moyenne : " + moyenne);
                                     finish();
 
                                 } else {

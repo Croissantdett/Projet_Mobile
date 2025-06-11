@@ -2,14 +2,12 @@ package com.example.fsi_notes;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -49,15 +47,17 @@ public class Bilan2Activity extends AppCompatActivity {
         remarque2 = findViewById(R.id.remarque2);
         btnBilan1 = findViewById(R.id.btnBilan1);
 
-
         drawerLayout = findViewById(R.id.drawer_layout);
         ivMenu = findViewById(R.id.ivMenu);
         navigationView = findViewById(R.id.nav_view);
 
 
+
+
         setupDrawer();
         loadUserData();
     }
+
 
     /**
      * Configure les écouteurs d'événements pour le menu tiroir.
@@ -82,8 +82,8 @@ public class Bilan2Activity extends AppCompatActivity {
                 startActivity(bilan1Intent);
                 finish();
             } else if (itemId == R.id.nav_info) {
-
-                Toast.makeText(Bilan2Activity.this, "Clic sur Informations", Toast.LENGTH_SHORT).show();
+                Intent infoIntent = new Intent(Bilan2Activity.this, InformationActivity.class);
+                startActivity(infoIntent);
             } else if (itemId == R.id.nav_logout) {
 
                 Toast.makeText(Bilan2Activity.this, "Déconnexion...", Toast.LENGTH_SHORT).show();
@@ -118,6 +118,7 @@ public class Bilan2Activity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             });
+
         } else {
             Toast.makeText(this, "Erreur: utilisateur non trouvé", Toast.LENGTH_LONG).show();
         }

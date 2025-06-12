@@ -36,6 +36,18 @@
                     android:background="#FFFFFF"
                     android:padding="24dp">
 
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="4dp"
+                        android:contentDescription="Logo"
+                        android:src="@drawable/fsi_logo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/tvBienvenue"
                         android:layout_width="wrap_content"

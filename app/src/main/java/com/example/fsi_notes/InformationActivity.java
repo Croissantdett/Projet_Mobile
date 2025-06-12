@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,9 @@ public class InformationActivity extends AppCompatActivity {
     private TextView telMaitapp;
     private TextView mailMaitapp;
     private TextView nomEnt;
+    private TextView adrEnt;
+    private TextView vilEnt;
+    private TextView cpEnt;
     private TextView nomTut;
     private TextView preTut;
     private TextView telTut;
@@ -56,6 +60,9 @@ public class InformationActivity extends AppCompatActivity {
         telMaitapp = findViewById(R.id.telMaitapp);
         mailMaitapp = findViewById(R.id.mailMaitapp);
         nomEnt = findViewById(R.id.nomEnt);
+        adrEnt = findViewById(R.id.adrEnt);
+        vilEnt = findViewById(R.id.vilEnt);
+        cpEnt = findViewById(R.id.cpEnt);
         nomTut = findViewById(R.id.nomTut);
         preTut = findViewById(R.id.preTut);
         telTut = findViewById(R.id.telTut);
@@ -124,6 +131,9 @@ public class InformationActivity extends AppCompatActivity {
             telMaitapp.setText(String.valueOf(utilisateur.getTelMaitapp()));
             mailMaitapp.setText(String.valueOf(utilisateur.getMailMaitapp()));
             nomEnt.setText(String.valueOf(utilisateur.getNomEnt()));
+            adrEnt.setText(String.valueOf(utilisateur.getAdrEnt()));
+            vilEnt.setText(String.valueOf(utilisateur.getVilEnt()));
+            cpEnt.setText(String.valueOf(utilisateur.getCpEnt()));
             nomTut.setText(String.valueOf(utilisateur.getNomTut()));
             preTut.setText(String.valueOf(utilisateur.getPreTut()));
             telTut.setText(String.valueOf(utilisateur.getTelTut()));
@@ -134,6 +144,8 @@ public class InformationActivity extends AppCompatActivity {
         }
 
         dataSource.close();
+
+
     }
 
 }

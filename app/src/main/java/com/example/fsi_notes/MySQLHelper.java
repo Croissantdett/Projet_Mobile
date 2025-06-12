@@ -23,6 +23,9 @@ public class MySQLHelper extends SQLiteOpenHelper {
             "telMaitapp TEXT, " +
             "mailMaitapp TEXT," +
             "nomEnt TEXT, " +
+            "adrEnt TEXT, " +
+            "vilEnt TEXT, " +
+            "cpEnt TEXT, " +
             "nomTut TEXT, " +
             "preTut TEXT, " +
             "telTut TEXT, " +

@@ -40,6 +40,9 @@ public class DataSource {
         values.put("telMaitapp", utilisateur.getTelMaitapp());
         values.put("mailMaitapp", utilisateur.getMailMaitapp());
         values.put("nomEnt", utilisateur.getNomEnt());
+        values.put("adrEnt", utilisateur.getAdrEnt());
+        values.put("vilEnt", utilisateur.getVilEnt());
+        values.put("cpEnt", utilisateur.getCpEnt());
         values.put("nomTut", utilisateur.getNomTut());
         values.put("preTut", utilisateur.getPreTut());
         values.put("telTut", utilisateur.getTelTut());
@@ -62,10 +65,11 @@ public class DataSource {
         return utilisateur;
     }
 
+
     public Utilisateur getsoloUtilisateur() {
         Utilisateur unutilsateur = null;
 
-        Cursor cursor = sqLiteDatabase.query(true, "Utilisateur", new String[]{"id", "nomUti", "preUti", "telUti", "mailUti","nomMaitapp", "preMaitapp", "telMaitapp", "mailMaitapp", "nomEnt", "nomTut", "preTut", "telTut", "mailTut", "datVisBil1", "notEnt", "notDosBil1", "notOraBil1", "moyBil1", "remBil1", "datVisBil2", "notDosBil2", "notOraBil2", "moyBil2", "remBil2"}, null, null, null, null, null, "1" // LIMIT 1 pour récupérer un seul utilisateur
+        Cursor cursor = sqLiteDatabase.query(true, "Utilisateur", new String[]{"id", "nomUti", "preUti", "telUti", "mailUti","nomMaitapp", "preMaitapp", "telMaitapp", "mailMaitapp", "nomEnt", "adrEnt", "vilEnt", "cpEnt", "nomTut", "preTut", "telTut", "mailTut", "datVisBil1", "notEnt", "notDosBil1", "notOraBil1", "moyBil1", "remBil1", "datVisBil2", "notDosBil2", "notOraBil2", "moyBil2", "remBil2"}, null, null, null, null, null, "1" // LIMIT 1 pour récupérer un seul utilisateur
         );
 
         if (cursor.moveToFirst()) {
@@ -82,7 +86,7 @@ public class DataSource {
     }
 
     private Utilisateur cursorToUtilisateur(Cursor cursor) {
-        Utilisateur cursorutilsateur = new Utilisateur(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13), cursor.getString(14), cursor.getFloat(15), cursor.getFloat(16), cursor.getFloat(17), cursor.getFloat(18), cursor.getString(19), cursor.getString(20), cursor.getFloat(21), cursor.getFloat(22), cursor.getFloat(23), cursor.getString(24));
+        Utilisateur cursorutilsateur = new Utilisateur(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9),cursor.getString(10),cursor.getString(11),cursor.getInt(12), cursor.getString(13), cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getFloat(18), cursor.getFloat(19), cursor.getFloat(20), cursor.getFloat(21), cursor.getString(22), cursor.getString(23), cursor.getFloat(24), cursor.getFloat(25), cursor.getFloat(26), cursor.getString(27));
         return cursorutilsateur;
     }
 }

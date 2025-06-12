@@ -47,9 +47,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="#888888" />
 
-                    <!-- Le reste de votre contenu (TextViews, TextInputLayouts) va ici... -->
-                    <!-- Je ne le remets pas pour la lisibilité, mais il est identique à votre code -->
-
                     <TextView
                         android:id="@+id/tvTitle"
                         android:layout_width="wrap_content"
@@ -165,6 +162,65 @@
                             android:inputType="text" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!-- NOUVEAU : Champ pour l'adresse de l'entreprise -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCompanyAddress"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:hint="Adresse de l'entreprise"
+                        app:layout_constraintTop_toBottomOf="@+id/tilCompanyName">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/adrEnt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPostalAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- NOUVEAU : Champ pour la ville de l'entreprise -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCompanyCity"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:hint="Ville"
+                        app:layout_constraintTop_toBottomOf="@+id/tilCompanyAddress">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/vilEnt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- NOUVEAU : Champ pour le code postal de l'entreprise -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCompanyPostalCode"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:hint="Code postal"
+                        app:layout_constraintTop_toBottomOf="@+id/tilCompanyCity">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/cpEnt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <!-- MODIFIÉ : Le champ suivant se positionne maintenant sous le code postal -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tilSupervisorLastName"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -174,7 +230,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:hint="Nom maître de stage"
-                        app:layout_constraintTop_toBottomOf="@+id/tilCompanyName">
+                        app:layout_constraintTop_toBottomOf="@+id/tilCompanyPostalCode">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/nomMaitapp"
@@ -236,7 +292,6 @@
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress" />
                     </com.google.android.material.textfield.TextInputLayout>
-
 
                     <TextView
                         android:id="@+id/tvTutorTitle"
@@ -323,6 +378,20 @@
                             android:layout_height="wrap_content"
                             android:inputType="text" />
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnEnregistrer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="Enregistrer les modifications"
+                        android:backgroundTint="#007BFF"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tilTutorTelephone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="16dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>

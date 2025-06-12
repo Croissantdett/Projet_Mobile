@@ -11,6 +11,9 @@ public class Utilisateur {
     private String telMaitapp ;
     private String mailMaitapp;
     private String nomEnt ;
+    private String adrEnt ;
+    private String vilEnt ;
+    private int cpEnt ;
     private String nomTut;
     private String preTut;
     private String telTut;
@@ -106,6 +109,30 @@ public class Utilisateur {
 
     public void setNomEnt(String nomEnt) {
         this.nomEnt = nomEnt;
+    }
+
+    public String getAdrEnt() {
+        return adrEnt;
+    }
+
+    public void setAdrEnt(String adrEnt) {
+        this.adrEnt = adrEnt;
+    }
+
+    public String getVilEnt() {
+        return vilEnt;
+    }
+
+    public void setVilEnt(String vilEnt) {
+        this.vilEnt = vilEnt;
+    }
+
+    public int getCpEnt() {
+        return cpEnt;
+    }
+
+    public void setCpEnt(int cpEnt) {
+        this.cpEnt = cpEnt;
     }
 
     public String getNomTut() {
@@ -232,7 +259,7 @@ public class Utilisateur {
     }
 
 
-    public Utilisateur(int idUti, String nomUti, String preUti, String telUti,String mailUti,  String nomMaitApp, String preMaitApp, String telMaitapp, String mailMaitapp, String nomEnt, String nomTut, String preTut, String telTut, String mailTut,String datVisBil1, float notEntBil1, float notDosBil1, float notOrBil1, float moyBil1, String remBil1, String datVisBil2, float notDossBil2, float notOrBil2,float  moyBil2, String remBil2) {
+    public Utilisateur(int idUti, String nomUti, String preUti, String telUti,String mailUti,  String nomMaitApp, String preMaitApp, String telMaitapp, String mailMaitapp, String nomEnt, String adrEnt, String vilEnt, int cpEnt, String nomTut, String preTut, String telTut, String mailTut,String datVisBil1, float notEntBil1, float notDosBil1, float notOrBil1, float moyBil1, String remBil1, String datVisBil2, float notDossBil2, float notOrBil2,float  moyBil2, String remBil2) {
 
         this.idUti = idUti;
         this.nomUti = nomUti;
@@ -244,6 +271,9 @@ public class Utilisateur {
         this.telMaitapp = telMaitapp;
         this.mailMaitapp = mailMaitapp;
         this.nomEnt = nomEnt;
+        this.adrEnt = adrEnt;
+        this.vilEnt = vilEnt;
+        this.cpEnt = cpEnt;
         this.nomTut = nomTut;
         this.preTut = preTut;
         this.telTut = telTut;
@@ -275,6 +305,9 @@ public class Utilisateur {
                 ", telMaitapp='" + telMaitapp + '\'' +
                 ", mailMaitapp='" + mailMaitapp + '\'' +
                 ", nomEnt='" + nomEnt + '\'' +
+                ", adrEnt='" + adrEnt + '\'' +
+                ", vilEnt='" + vilEnt + '\'' +
+                ", cpEnt=" + cpEnt +
                 ", nomTut='" + nomTut + '\'' +
                 ", preTut='" + preTut + '\'' +
                 ", telTut='" + telTut + '\'' +

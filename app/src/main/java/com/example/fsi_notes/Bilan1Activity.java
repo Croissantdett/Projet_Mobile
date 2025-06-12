@@ -17,6 +17,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Bilan1Activity extends AppCompatActivity {
 
     private TextView datevisit;
@@ -49,14 +54,11 @@ public class Bilan1Activity extends AppCompatActivity {
         remarque = findViewById(R.id.remarque);
         btnBilan2 = findViewById(R.id.btnBilan2);
 
-
         drawerLayout = findViewById(R.id.drawer_layout);
         ivMenu = findViewById(R.id.ivMenu);
         navigationView = findViewById(R.id.nav_view);
 
-
         setupDrawer();
-
 
         loadUserData();
     }
@@ -97,6 +99,7 @@ public class Bilan1Activity extends AppCompatActivity {
 
     /**
      * Charge les données de l'utilisateur depuis la base de données et les affiche.
+     * Ajoute une vérification pour afficher un toast si le bilan 1 est en retard.
      */
     private void loadUserData() {
         DataSource dataSource = new DataSource(Bilan1Activity.this);
@@ -104,7 +107,25 @@ public class Bilan1Activity extends AppCompatActivity {
 
         Utilisateur utilisateur = dataSource.getsoloUtilisateur();
         if (utilisateur != null) {
-            datevisit.setText(utilisateur.getDatVisBil1());
+            // Vérification du retard sur le bilan 1
+            String bilanDate = utilisateur.getDatVisBil1();  // date du bilan en String
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
+            try {
+                Date limite = sdf.parse("31/01/2025");
+                Date maintenant = new Date();
+
+                boolean bilanVide = (bilanDate == null || bilanDate.trim().isEmpty());
+
+                if (bilanVide && maintenant.after(limite)) {
+                    Toast.makeText(this, "Le bilan est en retard", Toast.LENGTH_LONG).show();
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            // Ensuite on remplit les champs
+            datevisit.setText(bilanDate);
             notedossier.setText(String.valueOf(utilisateur.getNotDosBil1()));
             noteoral.setText(String.valueOf(utilisateur.getNotOrBil1()));
             noteentreprise.setText(String.valueOf(utilisateur.getNotEntBil1()));
